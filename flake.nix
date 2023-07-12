@@ -26,46 +26,70 @@
     #};
   };
 
-  outputs = inputs@{ self, nixpkgs, hyprland, home-manager, ... }: {
-    nixosConfigurations = {
-      solaros = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs;
-        modules = [
-          hyprland.nixosModules.default
-          {
-            programs.hyprland.enable = true;
-            programs.hyprland.xwayland.enable = true;
-            programs.hyprland.nvidiaPatches = true;
-          }
+  outputs = inputs @ { nixpkgs, home-manager, hyprland, hyprland-contrib, helix, ... }: let
+    system = "x86_64-linux";
+    specialArgs = { inherit home-manager hyprland hyprland-contrib helix; };
+    inputModules = [
+      hyprland.nixosModules.default
+      {
+        programs.hyprland.enable = true;
+        programs.hyprland.xwayland.enable = true;
+        programs.hyprland.nvidiaPatches = true;
+      }
 
-          #options.wayland.windowManager.hyprland {
-          #  extraConfig = ''
-          #    input {
-          #      kb_variant = "dvorak"
-          #      force_no_accell = true
-          #    }
-          #  '';
-          #}
-          
+      #options.wayland.windowManager.hyprland {
+      #  extraConfig = ''
+      #    input {
+      #      kb_variant = "dvorak"
+      #      force_no_accell = true
+      #    }
+      #  '';
+      #}
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.solar = import ./home.nix;
-            home-manager.extraSpecialArgs = inputs;
-          }
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = specialArgs;
+        home-manager.users.solar = {
+          imports = [
+            ./home.nix
+            hyprland.homeManagerModules.default # OK, What The Fuck. Why does having this make the way.winMan.hypr line work...?
+          ];
+          wayland.windowManager.hyprland = {
+            enable = true;
+            nvidiaPatches = true;
+            recommendedEnvironment = true;
+            xwayland = {
+              enable = true;
+              #hidpi = true; # future use???
+            };
+            extraConfig = ''
+              env = WLR_NO_HARDWARE_CURSORS,1
+              input {
+                kb_layout = us
+                kb_variant = dvorak
+                force_no_accel = true
+              }
+            '';
+          };
+        };
+      }
 
-          #hyprland.homeManagerModules.default
-          #{
-          #  wayland.windowManager.hyprland.enable = true;
-          #}
-          ./configuration.nix
-       ];
-      };
+      #hyprland.homeManagerModules.default
+      #{
+      #  wayland.windowManager.hyprland.enable = true;
+      #}
+      ./configuration.nix
+    ];
+    
+  in {
+    nixosConfigurations."solaros" = nixpkgs.lib.nixosSystem {
+      inherit system specialArgs;
+      modules = inputModules ++ [];# TODO modularize stuff I guess
     };
   };
+}
 
 
   # The nixpkgs entry in the flake registry.
@@ -111,5 +135,3 @@
   #  type = "indirect";
   #  id = "nixpkgs";
   #};
-
-}
