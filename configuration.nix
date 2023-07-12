@@ -182,6 +182,8 @@
       enable = true;
       wayland = true;
     };
+    layout = "us";
+    xkbVariant = "dvorak";
   };
 
   hardware.nvidia = {
