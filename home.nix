@@ -1,63 +1,66 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfiles, ... }:
 
-{
-    home.username = "solar";
-    home.homeDirectory = "/home/solar";
+let
+  inherit (builtins) readFile;
+in{
+  home.username = "solar";
+  home.homeDirectory = "/home/solar";
 
-    programs.git = {
+  programs.git = {
+    enable = true;
+    userName = "Patrick";
+    userEmail = "patrick@useless.systems";
+  };
+
+  home.packages = [
+    pkgs.zip
+    pkgs.nnn
+    pkgs.kitty
+    pkgs.wofi
+    pkgs.steam
+  ];
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+  };
+
+  programs.fish = { # TODO add rust bins I guess...?
+    interactiveShellInit = ''
+      fish_add_path $HOME/bin $HOME/.local/bin $HOME/go/bin
+    '';
+  };
+
+  programs.kitty = {
+    enable = true;
+  };
+
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+    recommendedEnvironment = true;
+    xwayland = {
       enable = true;
-      userName = "Patrick";
-      userEmail = "patrick@useless.systems";
+      #hidpi = true; # future use???
     };
+    #xtraConfig =
+    #  readFile "${config.home.homeDirectory}/.config/nixos_files/dotfiles/hypr/hyprland.conf";
+  };
 
-    #home.packages = [
-    #  pkgs.zip
-    #  pkgs.nnn
-    #  #pkgs.kitty
-    #];
+  xdg.dataFile.hyprland.source = "${dotfiles}/hypr/hyprland.conf";
 
-    programs.starship = {
-      enable = true;
-      settings = {
-        add_newline = true;
-        aws.disabled = true;
-        gcloud.disabled = true;
-        line_break.disabled = true;
-      };
-    };
+  home.stateVersion = "23.05";
 
-    #wayland.windowManager.hyprland = {
-    #  extraConfig = ''
-    #    input {
-    #      kb_variant = "dvorak"
-    #      force_no_accel = true
-    #    }
-    #  '';
-    #};
-
-    programs.fish = { # TODO add rust bins I guess...?
-      interactiveShellInit = ''
-        fish_add_path $HOME/bin $HOME/.local/bin $HOME/go/bin
-      '';
-    };
-
-    #programs.kitty = {
-    #  enable = true;
-    #};
-
-    #programs.alacritty = {
-    #  enable = true;
-    #  env.TERM = "xterm-256color";
-    #  font = {
-    #    size = 12;
-    #    draw_bold_text_with_bright_colors = true;
-    #  };
-    #  scrolling.multiplier = 5;
-    #  selection.save_to_clipboard = true;
-    #};
-
-    home.stateVersion = "23.05";
-
-    programs.home-manager.enable = true;
-    
+  programs.home-manager.enable = true;
 }

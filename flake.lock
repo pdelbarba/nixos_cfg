@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689636053,
+        "narHash": "sha256-ygB8i3BDTPeKoX3XsfSK5dn/wnsPsuFHtCMTrZaf0+w=",
+        "owner": "aoeuid",
+        "repo": "dotfiles",
+        "rev": "44805b1f7b356a82b2c85c5869f228d55af5d4fa",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "aoeuid",
+        "repo": "dotfiles",
+        "type": "gitlab"
+      }
+    },
     "dream2nix": {
       "inputs": {
         "all-cabal-json": [
@@ -210,11 +226,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1688117346,
-        "narHash": "sha256-ouQ7g5zPv7miut14uFmFrcLNaXaknqpXxQjGNjTZqu8=",
+        "lastModified": 1689631903,
+        "narHash": "sha256-4osi3+2cT76he3Wczn+BdumVVeutiSZxy0YRb4NUQHI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "e96fcb31f0df36a88922fa1870e3372218c79539",
+        "rev": "7f47655f60be2c54dfa0e1758cbff20ab38217fc",
         "type": "github"
       },
       "original": {
@@ -230,11 +246,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1687033460,
-        "narHash": "sha256-X93JvDR+SeXYylPq0pn+yM/GpTz31rN/ioY7Lsrv1OE=",
+        "lastModified": 1688849364,
+        "narHash": "sha256-gW4x5YiCWFlckFiaLZo+RWJa1IyQ2Cx4jTrJzNy1OzQ=",
         "owner": "hyprwm",
         "repo": "contrib",
-        "rev": "93b6aba94c29388e1fe28908bc9b50e2ee841835",
+        "rev": "3126196e7ed609e7c427a39dc126ea067de62a65",
         "type": "github"
       },
       "original": {
@@ -359,11 +375,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1688109178,
-        "narHash": "sha256-BSdeYp331G4b1yc7GIRgAnfUyaktW2nl7k0C577Tttk=",
+        "lastModified": 1689503327,
+        "narHash": "sha256-qVwzYLA8oT2oWNDXO0A3bZHOhoPOihIB9T677+Hor1E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b72aa95f7f096382bff3aea5f8fde645bca07422",
+        "rev": "f64b9738da8e86195766147e9752c67fccee006c",
         "type": "github"
       },
       "original": {
@@ -415,6 +431,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "helix": "helix",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
