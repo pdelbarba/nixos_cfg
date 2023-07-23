@@ -18,6 +18,10 @@ in{
     pkgs.kitty
     pkgs.wofi
     pkgs.steam
+    pkgs.telegram-desktop
+    pkgs.eww-wayland
+    pkgs.dunst
+    pkgs.dex
   ];
 
   programs.starship = {
@@ -58,7 +62,12 @@ in{
     #  readFile "${config.home.homeDirectory}/.config/nixos_files/dotfiles/hypr/hyprland.conf";
   };
 
-  xdg.dataFile.hyprland.source = "${dotfiles}/hypr/hyprland.conf";
+  #xdg.dataFile.hyprland.source = "${dotfiles}/hypr/hyprland.conf";
+
+  home.file."${config.xdg.configHome}" = {
+    source = dotfiles;
+    recursive = true;
+  };
 
   home.stateVersion = "23.05";
 

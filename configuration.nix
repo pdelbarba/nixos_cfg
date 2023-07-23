@@ -101,21 +101,31 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    
+
+    # dev stuff
     git
     tig
     gitui
 
+    # cmd utils
     tree
     fish
     tmux
     ripgrep
     kitty
 
+    # wayland utils
+    grim
+    wl-clipboard
+    swww
+
+    # top of the morning
     htop
     iotop
     gtop
     iftop
+
+    discord
 
     helix.packages."${pkgs.system}".helix   
  
@@ -179,9 +189,19 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  networking.firewall.allowedUDPPorts = [ ];
-  networking.hostName = "solaros";
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ ];
+    };
+    hostName = "solaros";
+    extraHosts = ''
+      10.1.1.248 tron
+      10.1.1.248 gitea.tron
+      10.1.1.248 photos.tron
+      10.1.1.248 frig.tron
+    '';
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
