@@ -22,7 +22,43 @@ in{
     pkgs.eww-wayland
     pkgs.dunst
     pkgs.dex
-  ];
+    pkgs.libnotify
+    pkgs.hyfetch
+    pkgs.slurp
+    pkgs.joshuto
+    pkgs.libsForQt5.dolphin
+    ];
+
+  #icmds.lock = "swaylock";
+
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      ignore-empty-password = true;
+      #image = "${config.wallpaper}";
+      indicator = true;
+      indicator-idle-visible = true;
+      indicator-caps-lock = true;
+      indicator-radius = 100;
+      indicator-thickness = 16;
+      line-uses-inside = true;
+      effect-blur = "9x7";
+      effect-vignette = "0.85:0.85";
+      fade-in = 0.1;
+    };
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "swaylock"; }
+    ];
+    timeouts = [
+      { timeout = 450; command = "swaylock"; }
+    ];
+  };
+
 
   programs.starship = {
     enable = true;
