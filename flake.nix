@@ -7,6 +7,13 @@
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    hardware.url = "github:nixos/nixos-hardware";
+    impermanence.url = "github:nix-community/impermanence";
+
+    # TODO Do I want?
+    nix-colors.url = "github:misterio77/nix-colors";
+
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
@@ -17,9 +24,6 @@
 
     helix.url = "github:helix-editor/helix/23.05";
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -62,23 +66,23 @@
         # Desktop
         solaros = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/solaros ];
+          modules = [ ./hosts/solaros/default.nix ];
         };
         # FL Server
-        pluto = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/pluto ];
-        };
-        # CO Server
-        jupiter = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/jupiter ];
-        };
-        # Laptop
-        mercury = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/mercury ];
-        };
+        #pluto = nixpkgs.lib.nixosSystem {
+        #  specialArgs = { inherit inputs outputs; };
+        #  modules = [ ./hosts/pluto ];
+        #};
+        ## CO Server
+        #jupiter = nixpkgs.lib.nixosSystem {
+        #  specialArgs = { inherit inputs outputs; };
+        #  modules = [ ./hosts/jupiter ];
+        #};
+        ## Laptop
+        #mercury = nixpkgs.lib.nixosSystem {
+        #  specialArgs = { inherit inputs outputs; };
+        #  modules = [ ./hosts/mercury ];
+        #};
       };
 
       # Standalone home-manager configuration entrypoint

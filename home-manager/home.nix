@@ -41,10 +41,9 @@
     };
   };
 
-  # TODO: Set your username
   home = {
-    username = "your-username";
-    homeDirectory = "/home/your-username";
+    username = "patrick";
+    homeDirectory = "/home/patrick";
   };
 
   # Add stuff for your user as you see fit:
@@ -53,7 +52,12 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userEmail = "patrick@useless.systems";
+    userName = "Patrick DelBarba";
+  };
+  programs.helix.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
