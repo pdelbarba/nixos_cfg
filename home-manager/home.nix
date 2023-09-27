@@ -50,6 +50,10 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
     steam
+    firefox
+    telegram-desktop
+
+    pavucontrol
   
     wofi
     eww-wayland
@@ -116,8 +120,8 @@
   };
 
 
-  home.file."${config.xdg.configHome}" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles";
+  home.file."/home/patrick/.config/hypr" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr";
     recursive = true;
   };
 
