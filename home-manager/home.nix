@@ -48,7 +48,37 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [
+    steam
+  
+    wofi
+    eww-wayland
+    dunst
+    dex
+    libnotify
+    hyfetch
+    slurp
+    joshuto
+    libsForQt5.dolphin
+  ];
+
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      ignore-empty-password = true;
+      #image = "${config.wallpaper}";
+      indicator = true;
+      indicator-idle-visible = true;
+      indicator-caps-lock = true;
+      indicator-radius = 100;
+      indicator-thickness = 16;
+      line-uses-inside = true;
+      effect-blur = "9x7";
+      effect-vignette = "0.85:0.85";
+      fade-in = 0.1;
+    };
+  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -58,6 +88,39 @@
     userName = "Patrick DelBarba";
   };
   programs.helix.enable = true;
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "swaylock"; }
+    ];
+    timeouts = [
+      { timeout = 450; command = "swaylock"; }
+    ];
+  };
+
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = true;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+  };
+
+
+  home.file."${config.xdg.configHome}" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles";
+    recursive = true;
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

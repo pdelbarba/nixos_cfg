@@ -96,6 +96,8 @@
     ripgrep
     rm-improved
     kitty
+    zip
+    nnn
 
     # wayland utils
     grim
@@ -171,6 +173,8 @@
     driSupport32Bit = true;
   };
 
+
+  programs.hyprland.enable = true;
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
@@ -182,6 +186,14 @@
     xkbVariant = "dvorak";
   };
 
+  environment.variables = rec {
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    #WLR_NO_HARDWARE_CURSORS = "1";
+  };
+  
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
