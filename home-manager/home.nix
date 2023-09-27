@@ -52,11 +52,19 @@
     steam
     firefox
     telegram-desktop
+    libsForQt5.kdeconnect-kde
 
     pavucontrol
   
-    wofi
     eww-wayland
+    pamixer
+    socat
+    jq
+    pulseaudio
+
+    wireguard-tools
+    
+    wofi
     dunst
     dex
     libnotify
@@ -122,6 +130,36 @@
 
   home.file."/home/patrick/.config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/hyfetch.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hyfetch.json";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/dunst" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/dunst";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/eww" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/eww";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/fish" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/fish";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/helix" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/helix";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/gitui" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/gitui";
     recursive = true;
   };
 
