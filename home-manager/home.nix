@@ -46,25 +46,44 @@
     homeDirectory = "/home/patrick";
   };
 
+  home.sessionVariables = {
+    WALLPAPER_PATH = "/home/patrick/wallpapers/wallhaven-o3z85l.png";
+  };
+  
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    # Desktop applications
     steam
     firefox
     telegram-desktop
     libsForQt5.kdeconnect-kde
+    spotify
+    joplin-desktop
+    kicad
+    lutris
+    mpv
 
+    # CMD utils
+    yt-dlp
+    sqlite
+
+    # Sound
     pavucontrol
-  
+
+    # EWW dependencie
     eww-wayland
     pamixer
     socat
     jq
     pulseaudio
 
+    # Networking tools
     wireguard-tools
-    
+
+    # Utils for Hyprland    
     wofi
+    swww
     dunst
     dex
     libnotify
@@ -72,6 +91,8 @@
     slurp
     joshuto
     libsForQt5.dolphin
+
+
   ];
 
   programs.swaylock = {
