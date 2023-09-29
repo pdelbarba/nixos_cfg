@@ -90,8 +90,7 @@
     hyfetch
     slurp
     joshuto
-    libsForQt5.dolphin
-
+    pcmanfm
 
   ];
 
