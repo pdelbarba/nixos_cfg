@@ -96,6 +96,7 @@
     fish
     tmux
     ripgrep
+    fzf
     rm-improved
     kitty
     zip
@@ -112,7 +113,8 @@
     gtop
     iftop
 
-    discord
+    # nix related utils
+    nix-output-monitor
 
     ((vim_configurable.override {  }).customize{
       name = "vim";

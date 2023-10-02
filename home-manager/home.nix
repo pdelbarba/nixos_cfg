@@ -63,6 +63,7 @@
     kicad
     lutris
     mpv
+    discord
 
     # CMD utils
     yt-dlp

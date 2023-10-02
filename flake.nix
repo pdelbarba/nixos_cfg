@@ -24,6 +24,7 @@
 
     helix.url = "github:helix-editor/helix/23.05";
 
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
