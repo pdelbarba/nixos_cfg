@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, rust-overlay, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -21,7 +21,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
+      #rust-overlay.overlays.default
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -40,6 +40,8 @@
       allowUnfreePredicate = (_: true);
     };
   };
+
+#  environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
 
   home = {
     username = "patrick";
@@ -147,7 +149,6 @@
     enable = true;
     package = pkgs.vscodium;
   };
-
 
   home.file."/home/patrick/.config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr";

@@ -91,6 +91,9 @@
     tig
     gitui
 
+    # hardware dev/drivers stuff
+    rtl-sdr
+    
     # cmd utils
     tree
     fish
@@ -101,6 +104,7 @@
     kitty
     zip
     nnn
+    eza
 
     # wayland utils
     grim
@@ -140,7 +144,12 @@
   )
   ];
 
+  hardware.rtl-sdr.enable = true;
+  
+
   services = {
+    udev.packages = [ pkgs.rtl-sdr ];
+  
     pipewire = {
       enable = true;
       alsa = {
@@ -167,7 +176,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = [ "wheel" "audio" ];
+      extraGroups = [ "wheel" "audio" "plugdev" ];
     };
   };
 
