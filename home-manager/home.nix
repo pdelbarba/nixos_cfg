@@ -66,6 +66,8 @@
     lutris
     mpv
     discord
+    gnome.file-roller
+    pcmanfm
 
     # CMD utils
     yt-dlp
@@ -75,11 +77,11 @@
     pavucontrol
 
     # EWW dependencie
-    eww-wayland
-    pamixer
-    socat
-    jq
-    pulseaudio
+    waybar
+    #pamixer
+    #socat
+    #jq
+    #pulseaudio
 
     # Networking tools
     wireguard-tools
@@ -93,7 +95,6 @@
     hyfetch
     slurp
     joshuto
-    pcmanfm
 
   ];
 
@@ -152,6 +153,11 @@
 
   home.file."/home/patrick/.config/hypr" = {
     source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/hypr";
+    recursive = true;
+  };
+
+  home.file."/home/patrick/.config/waybar" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/waybar";
     recursive = true;
   };
 
