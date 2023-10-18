@@ -12,6 +12,33 @@
     ./hardware-configuration.nix
   ];
 
+  # Aux drive mounts
+
+  boot.supportedFilesystems = [ "ntfs" "zfs" ];
+  boot.zfs.extraPools = [ "photo-pool" "games" ];
+  services.zfs.autoScrub.enable = true;
+  boot.zfs.forceImportRoot = false;
+  services.zfs.trim.enable = true;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;  
+
+  fileSystems."/disks/f" = {
+    device = "/dev/disk/by-uuid/4EF4DC53F4DC3F41";
+    fsType = "ntfs-3g";
+    options = [ "rw" "uid=1001" ];
+  };
+
+  fileSystems."/disks/n" = {
+    device = "dev/disk/by-uuid/DA22598B22596E0F";
+    fsType = "ntfs-3g";
+    options = [ "rw" "uid=1001" ];
+  };
+
+  fileSystems."/disks/c" = {
+    device = "/dev/disk/by-uuid/8476C3C676C3B6E8";
+    fsType = "ntfs-3g";
+    options = [ "rw" "uid=1001" ];
+  };
+
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/6e14be55-2aac-41fd-a1eb-6dbd4a3db171";
@@ -74,6 +101,7 @@
       allowedUDPPorts = [ ];
     };
     hostName = "solaros";
+    hostId = "007f0200";
     extraHosts = ''
       10.1.1.248 tron
       10.1.1.248 gitea.tron
@@ -105,6 +133,9 @@
     zip
     nnn
     eza
+    usbutils
+    pciutils
+    zfs
 
     # wayland utils
     grim
