@@ -57,6 +57,10 @@
   home.packages = with pkgs; [
     # Desktop applications
     steam
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+      libgdiplus
     firefox
     telegram-desktop
     libsForQt5.kdeconnect-kde
@@ -68,10 +72,19 @@
     discord
     gnome.file-roller
     pcmanfm
+    digikam
+    rawtherapee
+    darktable
+    gimp-with-plugins
+    nomacs
+    #stm32cubemx
+    qbittorrent
+    wireshark
 
     # CMD utils
     yt-dlp
     sqlite
+    k3s
 
     # Sound
     pavucontrol

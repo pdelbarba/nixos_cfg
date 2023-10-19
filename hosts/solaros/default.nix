@@ -217,6 +217,8 @@
     driSupport32Bit = true;
   };
 
+  #needed for swaylock to work
+  security.pam.services.swaylock = {};
 
   programs.hyprland.enable = true;
   services.xserver = {
