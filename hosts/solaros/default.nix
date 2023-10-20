@@ -103,11 +103,28 @@
     hostName = "solaros";
     hostId = "007f0200";
     extraHosts = ''
-      10.1.1.248 tron
-      10.1.1.248 gitea.tron
-      10.1.1.248 photos.tron
-      10.1.1.248 frig.tron
+      10.1.1.248    tron.slow 
+      169.254.0.2   tron
+      169.254.0.2   gitea.tron
+      169.254.0.2   photos.tron
+      169.254.0.2   frig.tron
     '';
+
+    interfaces = {
+      enp5s0.ipv4 = {
+        addresses = [{
+          address = "169.254.0.3";
+          prefixLength = 24;
+        }];
+        
+        routes = [{
+          address = "169.254.0.2";
+          prefixLength = 32;
+          via = "169.254.0.3";
+        }];
+      };
+      
+    };
   };
   
   environment.systemPackages = with pkgs; [
@@ -241,8 +258,11 @@
   };
   
   hardware.nvidia = {
+    powerManagement.enable = true;
+    #powerManagement.finegrained = false; #Turing and later
     modesetting.enable = true;
     nvidiaSettings = true;
+    #open = true;
   };
   
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
