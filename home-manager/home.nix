@@ -85,6 +85,8 @@
     yt-dlp
     sqlite
     k3s
+    helm
+    nmap
 
     # Sound
     pavucontrol
@@ -108,7 +110,7 @@
     hyfetch
     slurp
     joshuto
-
+    nnn
   ];
 
   programs.swaylock = {
