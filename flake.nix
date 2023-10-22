@@ -63,23 +63,23 @@
         # Desktop
         solaros = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/solaros/default.nix ];
+          modules = [ ./hosts/solaros ];
         };
         # FL Server
-        #pluto = nixpkgs.lib.nixosSystem {
-        #  specialArgs = { inherit inputs outputs; };
-        #  modules = [ ./hosts/pluto ];
-        #};
-        ## CO Server
-        #jupiter = nixpkgs.lib.nixosSystem {
-        #  specialArgs = { inherit inputs outputs; };
-        #  modules = [ ./hosts/jupiter ];
-        #};
+        clu = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/clu ];
+        };
+        # CO Server
+        tron = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/tron ];
+        };
         ## Laptop
-        #mercury = nixpkgs.lib.nixosSystem {
-        #  specialArgs = { inherit inputs outputs; };
-        #  modules = [ ./hosts/mercury ];
-        #};
+        encom = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/encom ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -88,9 +88,22 @@
         "patrick@solaros" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home-manager/home.nix
-          ];
+          modules = [ ./home-manager/patrick/solaros.nix ];
+        };
+        "patrick@clu" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/clu.nix ];
+        };
+        "patrick@tron" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/tron.nix ];
+        };
+        "patrick@encom" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/encom.nix ];
         };
       };
     };
