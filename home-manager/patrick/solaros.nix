@@ -61,13 +61,12 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
       libgdiplus
+    lutris
     firefox
     telegram-desktop
     libsForQt5.kdeconnect-kde
     spotify
     joplin-desktop
-    kicad
-    lutris
     mpv
     discord
     gnome.file-roller
@@ -80,6 +79,9 @@
     #stm32cubemx
     qbittorrent
     wireshark
+    kicad
+    blender
+    freecad
 
     # CMD utils
     yt-dlp

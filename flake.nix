@@ -20,6 +20,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    private-fonts = {
+      url = "git+ssh://git@gitlab.com/aoeuid/private-nix-fonts.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hardware.url = "github:nixos/nixos-hardware";
   };
 

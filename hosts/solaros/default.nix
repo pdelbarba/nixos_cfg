@@ -56,7 +56,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
+      inputs.private-fonts.overlays.default
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -193,6 +193,27 @@
     }
   )
   ];
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      open-sans
+      dejavu_fonts
+      eb-garamond
+      berkeley-mono
+      (nerdfonts.override { fonts = [ "Hack" "FiraCode" "DroidSansMono" ]; })
+    ];
+    fontconfig = {
+      defaultFonts = {
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        monospace = [ "Hack" "Noto Sans Mono" ];
+      };
+    };
+  };
+
 
   hardware.rtl-sdr.enable = true;
   
