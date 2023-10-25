@@ -61,6 +61,7 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
       libgdiplus
+      gamescope
     lutris
     firefox
     telegram-desktop
