@@ -155,6 +155,7 @@
     pciutils
     zfs
     borgbackup
+    lsof
 
     # wayland utils
     grim

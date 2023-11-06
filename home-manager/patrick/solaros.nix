@@ -98,8 +98,9 @@
     # Sound
     pavucontrol
 
-    # EWW dependencie
+    # EWW/waybar dependencie
     waybar
+      weather
     #pamixer
     #socat
     #jq

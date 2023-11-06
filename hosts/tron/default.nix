@@ -112,6 +112,7 @@
     pciutils
     zfs
     borgbackup
+    lsof
 
     # top of the morning
     htop
