@@ -63,6 +63,10 @@
       libgdiplus
       gamescope
     lutris
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+    wine
     firefox
     telegram-desktop
     libsForQt5.kdeconnect-kde
@@ -82,7 +86,7 @@
     wireshark
     kicad
     blender
-    freecad
+#    freecad
 
     # CMD utils
     yt-dlp
