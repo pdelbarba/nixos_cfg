@@ -149,11 +149,6 @@
   )
   ];
 
-
-  services = {
-    flatpak.enable = true;
-  };
-
   # TODO: move to another file under common
   users.users = {
     patrick = {
