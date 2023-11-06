@@ -5,7 +5,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ../common
-    
+    ../common/k3s.nix    
     #./users.nix
 
     ./hardware-configuration.nix
@@ -14,18 +14,11 @@
   # Aux drive mounts
 
   boot.supportedFilesystems = [ "ntfs" "zfs" ];
-  #boot.zfs.extraPools = [ "photo-pool" "games" ];
+  boot.zfs.extraPools = [ "campool" "raidpool" ];
   services.zfs.autoScrub.enable = true;
   boot.zfs.forceImportRoot = false;
   services.zfs.trim.enable = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;  
-
-  boot.initrd.luks.devices = {
-    root = {
-      device = "/dev/disk/by-uuid/6e14be55-2aac-41fd-a1eb-6dbd4a3db171";
-      preLVM = true;
-    };
-  }; 
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -92,8 +85,12 @@
       };
     };
   };
-  
+ 
   environment.systemPackages = with pkgs; [
+    # server stuff
+    sqlite
+
+    # web cli tools
     wget
     curl
 

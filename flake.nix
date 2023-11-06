@@ -98,17 +98,17 @@
         "patrick@clu" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home-manager/clu.nix ];
+          modules = [ ./home-manager/patrick/clu.nix ];
         };
         "patrick@tron" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home-manager/tron.nix ];
+          modules = [ ./home-manager/patrick/tron.nix ];
         };
         "patrick@encom" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home-manager/encom.nix ];
+          modules = [ ./home-manager/patrick/encom.nix ];
         };
       };
     };
