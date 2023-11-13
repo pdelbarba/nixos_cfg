@@ -88,6 +88,18 @@
   };
 
   services.printing.enable = true;
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Brother-HL-L2300D";
+        location = "Desk";
+        deviceUri = "usb://Brother/HL-L2300D%20series?serial=U63878M7N266193";
+        model = "drv:///sample.drv/generic.ppd";
+      }
+    ];
+  };
+
   
   sound.enable = true;
 
@@ -156,6 +168,7 @@
     zfs
     borgbackup
     lsof
+    nvd
 
     # wayland utils
     grim
@@ -221,7 +234,12 @@
 
   services = {
     udev.packages = [ pkgs.rtl-sdr ];
-  
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="0403", MODE="0666"
+      SUBSYSTEM=="usb_device", ATTRS{idVendor}=="0403", MODE="0666"
+    '';
+
+
     pipewire = {
       enable = true;
       alsa = {

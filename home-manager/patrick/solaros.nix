@@ -86,7 +86,7 @@
     wireshark
     kicad
     blender
-#    freecad
+    freecad
 
     # CMD utils
     yt-dlp
