@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
 
   networking.firewall.allowedTCPPorts = [
@@ -11,5 +11,6 @@
   services.k3s.extraFlags = toString [
     # "--kubelet-arg=v=4" # Optionally add additional args to k3s
   ];
+  systemd.services.k3s.wantedBy = lib.mkForce [];
   environment.systemPackages = [ pkgs.k3s pkgs.helm ];
 }

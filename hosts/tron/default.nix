@@ -9,6 +9,7 @@
     #./users.nix
 
     ./hardware-configuration.nix
+    ./coral.nix
   ];
 
   # Aux drive mounts
@@ -17,6 +18,7 @@
   boot.zfs.extraPools = [ "campool" "raidpool" ];
   services.zfs.autoScrub.enable = true;
   boot.zfs.forceImportRoot = false;
+  boot.zfs.requestEncryptionCredentials = false;
   services.zfs.trim.enable = true;
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;  
 
@@ -85,7 +87,10 @@
       };
     };
   };
- 
+  services.tailscale.extraUpFlags = [
+    "--advertise-exit-node"
+  ];
+
   environment.systemPackages = with pkgs; [
     # server stuff
     sqlite
@@ -113,6 +118,9 @@
     zfs
     borgbackup
     lsof
+    nvd
+    libedgetpu
+    gasket
 
     # top of the morning
     htop
