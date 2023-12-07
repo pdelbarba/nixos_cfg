@@ -121,6 +121,7 @@
       169.254.0.2   photos.tron
       169.254.0.2   frig.tron
       169.254.0.2   jelly.tron
+      169.254.0.2   cloud.tron
     '';
 
     interfaces = {
