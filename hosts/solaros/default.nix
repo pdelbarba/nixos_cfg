@@ -170,6 +170,7 @@
     borgbackup
     lsof
     nvd
+    dig
 
     # wayland utils
     grim

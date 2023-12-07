@@ -92,7 +92,7 @@
     yt-dlp
     sqlite
     k3s
-    helm
+    kubernetes-helm
     nmap
 
     # Sound
