@@ -162,6 +162,7 @@
     rm-improved
     kitty
     zip
+    unzip
     nnn
     eza
     usbutils

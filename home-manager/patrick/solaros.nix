@@ -69,7 +69,7 @@
     wine
     firefox
     telegram-desktop
-    libsForQt5.kdeconnect-kde
+    element-desktop    
     spotify
     joplin-desktop
     mpv
@@ -77,16 +77,16 @@
     gnome.file-roller
     pcmanfm
     digikam
-    rawtherapee
     darktable
     gimp-with-plugins
-    nomacs
+    nomacs #image viewer
     #stm32cubemx
     qbittorrent
     wireshark
     kicad
     blender
     freecad
+    sioyek #pdf viewer
 
     # CMD utils
     yt-dlp
