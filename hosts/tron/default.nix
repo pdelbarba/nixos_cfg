@@ -162,6 +162,7 @@
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaRp0/N4pol7BxSkK0W+ofqmUogRQ/vvrDTipqo7oIb patrick@solaros"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHx5z0WQb4t6Q0P98XZhw+0DC9X7p+m4qNJUXhmbXCK4 patrick@phone"
       ];
       extraGroups = [ "wheel" ];
     };

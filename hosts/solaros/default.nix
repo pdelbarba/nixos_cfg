@@ -39,6 +39,12 @@
     options = [ "rw" "uid=1001" ];
   };
 
+  fileSystems."/disks/net_archive" = {
+    device = "patrick@tron:/raidpool/encrypted/net_archive";
+    fsType = "sshfs";
+    options = [ "noatime" "default_permissions" "allow_other" "uid=1001" "gid=100" "idmap=user" "identityfile=/home/patrick/.ssh/id_ed25519" ];
+  };
+
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/6e14be55-2aac-41fd-a1eb-6dbd4a3db171";
@@ -168,10 +174,12 @@
     usbutils
     pciutils
     zfs
+    sshfs
     borgbackup
     lsof
     nvd
     dig
+    jq
 
     # wayland utils
     grim
@@ -268,6 +276,7 @@
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHx5z0WQb4t6Q0P98XZhw+0DC9X7p+m4qNJUXhmbXCK4 patrick@phone"
       ];
       extraGroups = [ "wheel" "audio" "plugdev" ];
     };
