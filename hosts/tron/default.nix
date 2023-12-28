@@ -163,6 +163,7 @@
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAaRp0/N4pol7BxSkK0W+ofqmUogRQ/vvrDTipqo7oIb patrick@solaros"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHx5z0WQb4t6Q0P98XZhw+0DC9X7p+m4qNJUXhmbXCK4 patrick@phone"
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCofzNUpAto0yXck+PF2xfmX4SVigk2J+kSAP5BXOBoYQNmR+KIRHXBN+iUBY1LrBeNAwaA2/g38qSwrRzPboaLip/kr34f7KbvfgwshjmVvVwa7DFA2IEcA3j1EgsW/9HWH1k9QnejNiEinTt+hoUKxcY984fPRNyCwWEeJfRfhfMPgeCh0uM+LQ8KeK+VDoKXbnqHVy3AzSXacvK/XEyMPw68ovCHesV+s0t7aqtUBLx2N7VU8WxxrbbusddptvqbkC1uhgRdHd1JVdsb0Vnv8BV8b2ehYAl6Tzvl5yCWZ2GGc540dveGGnoZkxG0KgDNSzgF4mVk2CPMseuOsIaUCxUN9LRQA56/gJFe1RC8bANqvtjoFMURCGV05DaPNVVBnPKEXr1QYm5I36oqitpe1VZjkDMvuuqtbVdjUAD2Lu+WHkCPuDRgcBGjE2suJw32WyF9sTP2R6xTgv81iaegdokng4/YyMJCCMekI7lMsxvUJ/DgS/vL006OOq6arUc= patrick@eoi-patrick-lt"
       ];
       extraGroups = [ "wheel" ];
     };
