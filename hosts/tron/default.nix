@@ -10,6 +10,7 @@
 
     ./hardware-configuration.nix
     ./coral.nix
+    ./syncthing.nix
   ];
 
   # Aux drive mounts
@@ -70,8 +71,8 @@
   
   networking = {
     firewall = {
-      allowedTCPPorts = [ 22 80 443 ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [ 22 80 443 8384 22000 ];
+      allowedUDPPorts = [ 22000 21027 ];
     };
     hostName = "tron";
     hostId = "00a389b3";
@@ -119,8 +120,10 @@
     borgbackup
     lsof
     nvd
-    libedgetpu
-    gasket
+
+    #flatbuffers
+    #libedgetpu
+    #linuxKernel.packages.linux_6_6.gasket
 
     # top of the morning
     htop

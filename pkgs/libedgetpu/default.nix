@@ -5,12 +5,13 @@
 , abseil-cpp
 , flatbuffers
 , xxd
+, gcc12Stdenv
 }:
 
 let
   flatbuffers_1_12 = flatbuffers.overrideAttrs (oldAttrs: rec {
     version = "1.12.0";
-    NIX_CFLAGS_COMPILE = "-Wno-error=class-memaccess -Wno-error=maybe-uninitialized";
+    NIX_CFLAGS_COMPILE = "-Wno-error";
     cmakeFlags = (oldAttrs.cmakeFlags or []) ++ ["-DFLATBUFFERS_BUILD_SHAREDLIB=ON"];
     NIX_CXXSTDLIB_COMPILE = "-std=c++17";
     configureFlags = (oldAttrs.configureFlags or []) ++ ["--enable-shared"];
@@ -21,6 +22,7 @@ let
       sha256 = "sha256-L1B5Y/c897Jg9fGwT2J3+vaXsZ+lfXnskp8Gto1p/Tg=";
     };
   });
+  stdenv = gcc12Stdenv;
 
 in stdenv.mkDerivation rec {
   pname = "libedgetpu";
