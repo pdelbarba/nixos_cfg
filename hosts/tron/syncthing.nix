@@ -8,22 +8,14 @@
           path = "/raidpool/encrypted/backups/syncthing/Documents";
           devices = [ "pixel7p" ];
         };
-        "Camera" = {
-          path = "/raidpool/encrypted/backups/syncthing/Documents";
-          devices = [ "pixel7p" ];
-        };
         "Download" = {
-          path = "/raidpool/encrypted/backups/syncthing/Documents";
+          path = "/raidpool/encrypted/backups/syncthing/Download";
           devices = [ "pixel7p" ];
         };
         "DCIM" = {
-          path = "/raidpool/encrypted/backups/syncthing/Documents";
+          path = "/raidpool/encrypted/backups/syncthing/DCIM";
           devices = [ "pixel7p" ];
         };
-      };
-      gui = {
-        user = "patrick";
-        password = "uhs3r4u8";
       };
     };
     guiAddress = "100.77.88.152:8384";

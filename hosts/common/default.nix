@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ inputs, outputs, lib, ... }: {
+{ inputs, outputs, lib, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./default_shell.nix
@@ -36,7 +36,9 @@
   };
 
   console = {
-    font = "ter-i32b";
+    earlySetup = true;
+    packages = with pkgs; [ terminus_font ];
+    font = "ter-u28n";
     keyMap = "dvorak";
   };
 
