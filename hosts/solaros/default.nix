@@ -180,6 +180,7 @@
     nvd
     dig
     jq
+    lm_sensors
 
     # wayland utils
     grim
