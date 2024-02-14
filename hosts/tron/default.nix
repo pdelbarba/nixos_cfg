@@ -130,6 +130,7 @@
     iotop
     gtop
     iftop
+    btop
 
     # nix related utils
     nix-output-monitor
