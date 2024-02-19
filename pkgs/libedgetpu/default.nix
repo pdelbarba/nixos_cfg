@@ -2,7 +2,7 @@
 , lib
 , fetchFromGitHub
 , libusb1
-, abseil-cpp
+, abseil-cpp_202308
 , flatbuffers
 , xxd
 , gcc12Stdenv
@@ -41,7 +41,7 @@ in stdenv.mkDerivation rec {
 
   buildInputs = [
     libusb1
-    abseil-cpp
+    abseil-cpp_202308
     flatbuffers_1_12
   ];
 
