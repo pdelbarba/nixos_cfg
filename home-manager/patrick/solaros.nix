@@ -94,6 +94,7 @@
     k3s
     kubernetes-helm
     nmap
+    pijul
 
     # Sound
     pavucontrol
@@ -110,6 +111,9 @@
     wireguard-tools
 
     # Utils for Hyprland    
+    qt5.qtwayland
+    qt6.qtwayland
+    
     wofi
     swww
     dunst
